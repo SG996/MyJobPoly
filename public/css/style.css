@@ -5,7 +5,7 @@
     --primary: #00b14f;
     --primary-hover: #008f3f;
     --dark: #212f3f;
-    --bg-gray: #f4f5f5;
+    --bg-gray: #F3F5F7;
     --text-main: #333;
     --text-muted: #7f878f;
     --border-color: #e8eded;
@@ -925,4 +925,260 @@ a { text-decoration: none; }
 .btn-upload:hover {
     border-color: var(--primary);
     color: var(--primary);
+}
+
+
+/* =========================================
+   9. TRANG CHỦ - PHẦN VIỆC LÀM TỐT NHẤT (HOME PAGE)
+========================================= */
+
+/* CONTAINER CHA CHO TIÊU ĐỀ VÀ PHẦN LỌC ĐỊA ĐIỂM */
+.section-header {
+    display: flex;
+    justify-content: space-between; /* Đẩy tiêu đề sang trái, filter sang phải */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    margin-bottom: 20px; /* Khoảng cách với lưới việc làm */
+}
+
+/* Tiêu đề "Việc làm tốt nhất" */
+.section-title h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0; /* Xóa margin mặc định của h2 */
+    color: var(--dark);
+}
+
+/* CSS CHO THANH LỌC ĐỊA ĐIỂM (CẬP NHẬT GỌN HƠN) */
+.filter-section {
+    display: flex;
+    gap: 8px; /* Giảm gap một chút cho gọn */
+    align-items: center;
+    /* Xóa nền trắng và border của phiên bản trước */
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    margin-bottom: 0;
+}
+
+.filter-label {
+    font-size: 13px; /* Font nhỏ hơn cho thanh lọc */
+    color: var(--text-muted);
+    margin-right: 5px;
+}
+
+/* Cập nhật kiểu dáng cho nút lọc (filter-tag) gọn gàng hơn */
+.filter-tag {
+    background: var(--bg-gray); /* Nền xám nhạt */
+    padding: 5px 12px; /* Padding nhỏ hơn */
+    border-radius: 15px; /* Bo tròn ít hơn (dạng viên thuốc) */
+    font-size: 12px; /* Font nhỏ hơn */
+    color: var(--text-main);
+    border: 1px solid #ddd; /* Thêm border nhẹ cho rõ ràng giống TopCV */
+    transition: 0.3s;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.filter-tag:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: white; /* Đổi nền khi hover */
+}
+
+.filter-tag.active {
+    background-color: var(--primary); /* Nền xanh active */
+    color: white;
+    border-color: var(--primary);
+    box-shadow: none; /* Xóa bóng đổ cho gọn */
+}
+
+
+/* =========================================
+   10. PHÂN TRANG (PAGINATION) - STYLE HIỆN ĐẠI
+========================================= */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.my-pagination {
+    display: flex;
+    gap: 12px; /* Khoảng cách giữa các nút */
+    list-style: none;
+    padding: 0;
+    align-items: center;
+}
+
+.page-link-custom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    height: 40px;
+    border-radius: 50%; /* Nút hình tròn hoàn hảo */
+    border: 1px solid #e4e5e5; /* Viền xám nhạt mặc định */
+    background-color: white;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Hiệu ứng khi di chuột vào (Hover) */
+.page-link-custom:hover:not(.disabled):not(.active) {
+    background-color: rgba(0, 177, 79, 0.05); /* Nền xanh lá cực nhạt */
+    color: var(--primary);
+    border-color: var(--primary); /* Viền chuyển xanh lá */
+}
+
+/* Trạng thái đang ở trang hiện tại (Active) */
+.page-link-custom.active {
+    background-color: var(--primary);
+    color: white;
+    border-color: var(--primary);
+    box-shadow: 0 4px 10px rgba(0, 177, 79, 0.25); /* Bóng đổ cho nút hiện tại nổi lên */
+}
+
+/* Trạng thái không thể bấm (Ví dụ: đang ở trang 1 thì không bấm được nút Lùi) */
+.page-link-custom.disabled {
+    color: #ccc;
+    border-color: #eee;
+    background-color: #fafafa;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   11. CSS RESPONSIVE (Dành cho Mobile & Tablet)
+========================================= */
+
+/* Dành cho máy tính bảng (dưới 1024px) */
+@media (max-width: 1024px) {
+    .job-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .account-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .job-detail-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Dành cho Mobile (dưới 768px) */
+@media (max-width: 768px) {
+    /* Header */
+    .header-wrapper {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px 0;
+    }
+    
+    .main-header {
+        height: auto;
+        padding-bottom: 10px;
+        position: relative; /* Bỏ sticky trên mobile tránh bị vướng */
+    }
+    
+    .nav-menu {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+    
+    .header-right {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    /* Trang chủ - Hero Section */
+    .hero-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-box {
+        flex-direction: column;
+    }
+    
+    .search-box .btn-primary {
+        width: 100%;
+    }
+    
+    /* Trang chủ - Jobs Grid */
+    .job-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .filter-section {
+        flex-wrap: wrap;
+    }
+    
+    /* Job Detail */
+    .job-info-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .action-buttons-group {
+        flex-direction: column;
+    }
+    
+    .action-buttons-group > * {
+        width: 100%;
+    }
+    
+    /* Account / Auth */
+    .auth-container {
+        flex-direction: column;
+    }
+    
+    .auth-banner {
+        padding: 30px 20px;
+    }
+    
+    .auth-form-box {
+        padding: 30px 20px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .avatar-upload-box {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    /* Article blog list */
+    .article-card {
+        flex-direction: column;
+    }
+    
+    .article-img-wrapper {
+        width: 100%;
+        height: 200px;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
 }

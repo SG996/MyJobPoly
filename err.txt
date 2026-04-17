@@ -1,0 +1,1 @@
+[2026-04-03 05:46:11] local.ERROR: Uncaught Error: Call to undefined method ReflectionProperty::isVirtual() in C:\laragon\www\KNLV\vendor\symfony\var-dumper\Caster\Caster.php:198

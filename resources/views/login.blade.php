@@ -21,20 +21,28 @@
                 <h1 class="auth-title">Chào mừng trở lại!</h1>
                 <p class="auth-subtitle">Cùng xây dựng lộ trình sự nghiệp của bạn</p>
 
-                <form action="#" method="POST">
+                @if($errors->any())
+                    <div style="color: #dc3545; background-color: #f8d7da; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 14px;">
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
+                <form action="{{ route('login.post') }}" method="POST">
+                    @csrf
+
                     <div class="form-group">
                         <label class="form-label" for="email">Email của bạn</label>
-                        <input type="email" id="email" class="form-control" placeholder="Ví dụ: nguyenvanan@gmail.com" required>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Ví dụ: nguyenvanan@gmail.com" value="{{ old('email') }}" required>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="password">Mật khẩu</label>
-                        <input type="password" id="password" class="form-control" placeholder="Nhập mật khẩu (từ 6-20 ký tự)" required>
+                        <input type="password" id="password" name="password" class="form-control" placeholder="Nhập mật khẩu (từ 6-20 ký tự)" required>
                     </div>
 
                     <div class="auth-options">
                         <label>
-                            <input type="checkbox"> Nhớ mật khẩu
+                            <input type="checkbox" name="remember"> Nhớ mật khẩu
                         </label>
                         <a href="#">Quên mật khẩu?</a>
                     </div>

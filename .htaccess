@@ -1,0 +1,10 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # Không cho phép truy cập trực tiếp vào thư mục .git, .env, khoá bảo mật
+    RewriteRule ^(\.git|\.env|composer\.(json|lock)|package\.(json|lock)|.+\.sqlite)$ - [F,L]
+
+    # Dẫn luồng request vào thư mục public/
+    RewriteCond %{REQUEST_URI} !^/public/
+    RewriteRule ^(.*)$ /public/$1 [L,QSA]
+</IfModule>

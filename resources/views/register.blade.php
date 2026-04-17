@@ -21,27 +21,34 @@
                 <h1 class="auth-title">Tạo tài khoản mới</h1>
                 <p class="auth-subtitle">Nhanh chóng, tiện lợi và hoàn toàn miễn phí</p>
 
-                <form action="#" method="POST">
+                @if($errors->any())
+                    <div style="color: #dc3545; background-color: #f8d7da; padding: 10px; border-radius: 5px; margin-bottom: 15px; font-size: 14px;">
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+
+                <form action="{{ route('register.post') }}" method="POST">
+                    @csrf
 
                     <div class="form-group">
                         <label class="form-label" for="fullname">Họ và tên</label>
-                        <input type="text" id="fullname" class="form-control" placeholder="Ví dụ: Nguyễn Văn A" required>
+                        <input type="text" id="fullname" name="name" class="form-control" placeholder="Ví dụ: Nguyễn Văn A" value="{{ old('name') }}" required>
                     </div>
 
                     <div class="form-group">
                         <label class="form-label" for="email">Email của bạn</label>
-                        <input type="email" id="email" class="form-control" placeholder="Ví dụ: nguyenvanan@gmail.com" required>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="Ví dụ: nguyenvanan@gmail.com" value="{{ old('email') }}" required>
                     </div>
 
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                         <div class="form-group">
                             <label class="form-label" for="password">Mật khẩu</label>
-                            <input type="password" id="password" class="form-control" placeholder="Từ 6-20 ký tự" required>
+                            <input type="password" id="password" name="password" class="form-control" placeholder="Từ 6-20 ký tự" required>
                         </div>
 
                         <div class="form-group">
                             <label class="form-label" for="password_confirmation">Xác nhận mật khẩu</label>
-                            <input type="password" id="password_confirmation" class="form-control" placeholder="Nhập lại mật khẩu" required>
+                            <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" placeholder="Nhập lại mật khẩu" required>
                         </div>
                     </div>
 
@@ -69,6 +76,11 @@
 
                     <div class="auth-switch">
                         Đã có tài khoản? <a href="{{ url('/login') }}">Đăng nhập ngay</a>
+                    </div>
+
+                    <div class="auth-switch" style="margin-top: 8px; padding-top: 12px; border-top: 1px solid #f1f5f9;">
+                        Bạn là doanh nghiệp/nhà tuyển dụng?
+                        <a href="{{ route('register.employer') }}" style="color: #00b14f; font-weight: 700;">Đăng ký tại đây 🏢</a>
                     </div>
                 </form>
             </div>

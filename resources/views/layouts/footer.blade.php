@@ -17,7 +17,7 @@
             <div class="footer-col">
                 <h4>Ứng viên</h4>
                 <ul>
-                    <li><a href="#">Tìm việc làm</a></li>
+                    <li><a href="{{ route('jobs.list') }}">Tìm việc làm</a></li>
                     <li><a href="#">Tạo CV Online</a></li>
                     <li><a href="#">Đánh giá năng lực</a></li>
                 </ul>
